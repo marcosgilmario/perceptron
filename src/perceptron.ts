@@ -56,6 +56,7 @@ class Neuron {
     }
 
     setInputs(entradas) {
+        //console.log("\nentrada: \n", entradas)
         this.inputs.push(entradas);
     }
 
@@ -65,7 +66,6 @@ class Neuron {
             u = u + this.inputs[i] * this.weights[i];
             //console.log(this.inputs[i], this.weights[i], u.toFixed(2))
         }
-        //console.log(u)
         this.output = u.toFixed(2);
     }
 
@@ -107,21 +107,44 @@ async function WinnerTakesAll() {
     let max = -9999.9
     let i , classe;
 
-    for(let i  = 0; i < qtyOtput; i++) {
-        
+    for(i  = 0; i < qtyOtput; i++) {
+        if(network[i].getoutPut() > max) {
+            max = network[i].getoutPut();
+            classe=i;
+        }
     }
+    
+    return classe;
 } 
-/* async function testPerceptron() {
+ async function testPerceptron() {
   let inputData = [1, 1, 1];
   let net = new Neuron(qtyInputs);
   net.setInputs(inputData);
   net.propagation()
   console.log("\n\nResultado:\n");
   console.log(net.getoutPut())
-  
+
 }
 
-testPerceptron();
- */
+
+async function findResult() {
+    qtyInputs ;
+    let result = await WinnerTakesAll()
+    console.log(
+    `\n\nResultado: ${result}
+    ${result === 0 ? "Vermelho" 
+    : result === 1 ? "Verde" 
+    : result === 2 ? "Azul" 
+    : result === 3 ? "Preto" 
+    : result === 4 ? "Branco" 
+    : result === 5 ? "Amarelo" 
+    : result === 6 ? "Magenta"  
+    : "Ciano"}`)
+}
+
+findResult()
+
+//testPerceptron();
+
 
 

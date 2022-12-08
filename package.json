@@ -6,7 +6,7 @@
   "author": "Marcos Gilmario Ferreira Moreira & Kharlos Danyell Fonseca de Oliveira",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.ts",
+    "start": "node src/perceptron.ts",
     "dev": "nodemon src/index.ts"
   },
   "dependencies": {
